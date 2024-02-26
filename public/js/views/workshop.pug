@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+  head
+    link(rel="stylesheet", href="/css/styles.css")
+    script(src="/js/addworkshop.js")
+    title Add Workshop
+  body
+    include ./headers
+
+    p#uname(hidden) #{session.username}
+
+    if session && session.loggedin
+
+      if !session.artist 
+        h2 Not Authorized 
+
+      else 
+     
+        h3 Workshop Name 
+        input(type="text", id='wname', name='wname', value='')
+        br
+        br
+        button(type="button", onclick="addworkshop()") Add     
+    
+    else 
+        h2 Not Authorized
+        

@@ -1,0 +1,24 @@
+html
+	head
+		title Register User
+		link(rel="stylesheet", href="/css/styles.css")
+		script(src="/js/register.js")
+	
+	body
+		#header
+			a(href="/Home") (Home)
+			span
+				a(href="/register") Register 
+			br
+			br
+		div#error(style="color:red")
+		div
+			| Username: 
+			input#name(type="textbox")
+
+		div
+			br
+			| Password: 
+			input#pass(type="password")
+		div
+			button#submit(type="button", onclick="save()") Register
