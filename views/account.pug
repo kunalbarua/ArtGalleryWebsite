@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+  head
+    link(rel="stylesheet", href="/css/styles.css")
+    script(src="/js/client.js")
+    title Add Workshop
+  body
+    include ./headers
+
+    if session && session.loggedin 
+
+        if !session.artist
+            h2 <em>Account Type</em>: Patron
+            h3 Switch to 
+                a(href="/switchtoArtist") Artist
+
+        else   
+            h2 <em>Account Type</em>: Artist
+            h3 Switch to 
+                a(href="/switchtoPatron") Patron
+    
+        

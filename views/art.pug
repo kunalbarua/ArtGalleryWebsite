@@ -1,0 +1,154 @@
+doctype html
+html(lang="en")
+  head
+    link(rel="stylesheet", href="/css/styles.css")
+    script(src="/js/client.js")
+    title Art
+
+  body(onload="init()")
+    include ./headers
+
+    p#uid(hidden) #{art._id}
+    p#username(hidden) #{session.username}
+
+    if session && session.loggedin
+
+        //if a patron do this
+        if !session.artist 
+
+            each value, title in art
+
+                if title == "name"
+                    h1= value
+
+                if title == "artist"
+                    h2 <em>by~ #{value} </em>
+
+            ul 
+
+                li
+                    each value, title in art
+
+                        if title == "_id"
+                            -var id = value  
+
+                        if title == "year" || title == "category" || title == "medium" || title == "description"
+
+                            p <em><b>#{title}</b></em>: #{value}
+
+                        if title == "review"
+            
+                            if value.length == 0
+                                p <em><b>Review:</em></b> <b> None </b>
+                            else
+                                p <em><b>Review:</em></b> 
+                                    each review, user in value[0]
+                                        each rev in review 
+                                            ul 
+                                                li <b>#{rev}</b>
+
+                            br
+                            button(type="button", style="width: 100px",onclick="deleteReview()") Clear Review 
+
+                            p Add Review 
+                            input(type="text", id='areview', name='areview', value='')
+                            br
+                            br
+
+                        if title == "rating"
+
+                            li="Rating: "
+                            p#stars 
+
+                            p <em><b>Update Rating</em></b>:
+                                #buttons
+
+                            if value.length == 2
+                                p <em><b>Average Rating</em></b>: <b> None </b>
+                
+                            else 
+                                // Add average rating here
+                                p <em><b>Average Rating</em></b>: <b> #{art.average} </b>
+                                    
+                            br
+
+                        if title  == "image"
+
+                            img(src=value, alt='image')
+                            br
+
+
+                button(type="button", style="background-color:#316692; color:white",onclick="updateArt()") Save Changes
+
+        //If its an artist account, do this
+        if session.artist 
+
+            each value, title in art
+
+                if title == "name"
+                    h1= value
+
+                if title == "artist"
+                    h2 <em>by~ #{value} </em>
+
+            ul 
+
+                li
+                    each value, title in art
+
+                        if title == "_id"
+                            -var id = value  
+
+                        if title == "year" || title == "category" || title == "medium" || title == "description"
+
+                            p <em><b>#{title}</b></em>: #{value}
+
+                        if title == "review"
+            
+                            if value.length == 0
+                                p <em><b>Review:</em></b> <b> None </b>
+
+                            else
+                                p <em><b>Review:</em></b> 
+                                    each review, user in value[0]
+                                        each rev in review 
+                                            ul 
+                                                li <b>#{rev}</b> 
+
+                        if title == "rating"
+                            if value.length == 2
+                                p <em><b>Average Rating</em></b>: <b> None </b>
+                
+                            else 
+                                // Add average rating here
+                                p <em><b>Average Rating</em></b>: <b> #{art.average} </b>
+
+                        if title  == "image"
+
+                            img(src=value, alt='image')
+                            br
+
+                        if title == "workshop"
+
+                            if value.length == 0
+                                p <em><b>Wrokshops</em></b>: <b> None </b>          
+
+                            if value.length > 0 
+                                p <em><b>Wrokshops</em></b>:
+                                    span 
+                                        each ws in value 
+                                            ul
+                                                li <b>#{ws}</b>
+
+                                
+                                br
+                                br 
+
+                if art.artist == session.username 
+                    button(type="button", style="background-color:#316692; color:white",onclick="deleteArt()") Delete             
+
+        
+    else 
+        h2 Not Authorized            
+
+

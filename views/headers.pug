@@ -1,0 +1,73 @@
+div#header
+    a(href="/Home") (Home)
+    |
+    if session && session.loggedin
+        |
+        |
+        |
+        |
+        |
+        a(href="/gallery") (Gallery)  
+        |
+        |
+        |
+        |
+        |
+        |
+        a(href="/addart") (Add New Art)
+        |
+        |
+        |
+        |
+        |
+        |
+        a(href="/workshop") (Add New Workshop) 
+        |
+        |
+        |
+        |
+        |
+        |
+        a(href="/account") (Account) 
+        |
+        |
+        |
+        |
+        |
+        |
+        a(href="/rated") (Rated)
+        |
+        |
+        |
+        |
+        |
+        |
+        a(href="/notification") (Notifications)
+        |
+        |
+        |
+        |
+        |
+        |
+        a(href="/logout") (Logout)
+
+    else 
+        span
+            |
+            |
+            a(href="/register") (Register) 
+            br
+            br
+        span
+            form(action="/login" method="post")
+                | Username: 
+                input(type="text" name="username" required)
+                br
+                br
+                | Password: 
+                input(type="password" name="password" required)
+                |
+                br   
+                button(type="submit") Login
+
+
