@@ -1,7 +1,9 @@
 (AUTHOR)
 Kunal Barua
-Carleton University 
-STD ID:- 101218700
+Carleton University-COMP2406 (Final Project)
+
+(Youtube Link)
+https://youtu.be/6E_Y0p_Zyuo
 
 (Required Modules)
 -Please install the following modules before intializing the database and running the server.
@@ -32,6 +34,3 @@ to start the web app from clean slate.
 
 After intializing the databse, go to "http://localhost:3000/" to start messing around 
 with my website. :)
-
-(Youtube Link)
-https://youtu.be/6E_Y0p_Zyuo
