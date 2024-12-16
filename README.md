@@ -4,6 +4,16 @@ Carleton University-COMP2406 (Final Project)
 
 (Some Screenshots)
 
+<ul>
+    
+<li>Gallery</li>
+
+![Alt text](./Gallery.png)
+
+![Alt text](./Rating.png)
+
+
+</ul>
 
 (Youtube Link)
 https://youtu.be/6E_Y0p_Zyuo
